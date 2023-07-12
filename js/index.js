@@ -1,4 +1,4 @@
-//bienvenida
+//bienvenida al usuario
 
 alert("Bienvenido al sitio web de eventos para cumpleaños");
 
