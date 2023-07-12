@@ -1,6 +1,6 @@
 //bienvenida al usuario
 
-alert("Bienvenido al sitio web de eventos para cumpleaños");
+alert("¡Bienvenido al sitio web de contratación de servicios para eventos!");
 
 let nombre = prompt("Por favor escriba su nombre");
 let apellido = prompt("Escriba su apellido");
