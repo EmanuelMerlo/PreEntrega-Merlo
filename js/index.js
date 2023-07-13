@@ -2,13 +2,22 @@
 
 alert("¡Bienvenido al sitio web de contratación de servicios para eventos!");
 
-let nombre = prompt("Por favor escriba su nombre");
-let apellido = prompt("Escriba su apellido");
+let nombre = prompt("Por favor escriba su nombre.")
+let apellido = prompt("Por favor escriba su apellido.")
 
-const nombreUsuario = nombre + " " + apellido;
-console.log("Nombre de cliente: " + nombreUsuario);
+
+while (nombre && apellido == " ") {
+    alert("Ingresaste un nombre inválido")
+    nombre = prompt("Ingresa tu nombre nuevamente")
+    apellido = prompt("Ingresa tu apellido nuevamente")
+}
+
+const nombreUsuario = (nombre + " " + apellido)
+
 alert("Bienvenido " + nombreUsuario)
-alert("Obtendrá su presupuesto introduciendo los siguientes datos");
+console.log("Nombre de cliente: " + nombreUsuario)
+alert("Obtendrá su presupuesto introduciendo los siguientes datos")
+
 
 //funciones para realizar presupuesto
 
@@ -16,11 +25,12 @@ const resta = (presupuestoTotal, descuentoAlPresupuesto) => presupuestoTotal - d
 
 function presupuestar() {
     let numeroDePersonas = parseInt(prompt("Introduzca la cantidad de personas"))
-    if (numeroDePersonas == isNaN(Number)) {
-        alert("¡No ingresaste un número válido!")
-    } else {
-        console.log("La cantidad de personas es: " + numeroDePersonas)
+    while (isNaN(numeroDePersonas)) {
+        alert("¡No ingresaste un número válido!");
+        numeroDePersonas = parseInt(prompt("Introduzca la cantidad de personas por favor"));
     }
+    console.log("La cantidad de personas es: " + numeroDePersonas)
+
 
     let presupuestoTotal = (numeroDePersonas * precioPorPersona);
     let descuentoAlPresupuesto = 8000
@@ -39,12 +49,15 @@ function presupuestar() {
 //Declaraciones de variables para el switch
 
 let precioPorPersona = 0;
-let busqueda = prompt("¿Qué buscas? ¿Cascada de chocolate, catering o mesa dulce?");
+let busqueda = prompt("Indique la opción con el número correspondiente: \n(1). Cascada de chocolate \n(2). Catering \n(3). Mesa dulce");
+
+while (isNaN(busqueda)){
+    alert("No contamos con ese servicio");
+    busqueda = prompt("Indique la opción con el número correspondiente: \n(1). Cascada de chocolate \n(2). Catering \n(3). Mesa dulce");
+}
 
 switch (busqueda) {
-    case "cascada de chocolate":
-    case "CASCADA DE CHOCOLATE":
-    case "Cascada de chocolate":
+    case "1":
         console.log("Elgiste el servicio de cascada de chocolate.")
         alert("El precio por persona es de $2700.")
         precioPorPersona = 2700
@@ -52,9 +65,7 @@ switch (busqueda) {
         presupuestar()
         break;
 
-    case "catering":
-    case "CATERING":
-    case "Catering":
+    case "2":
         console.log("Elegiste el servicio de catering.")
         alert("El precio por persona es de $1300.")
         precioPorPersona = 1300
@@ -62,9 +73,7 @@ switch (busqueda) {
         presupuestar()
         break;
 
-    case "mesa dulce":
-    case "MESA DULCE":
-    case "Mesa dulce":
+    case "3":
         console.log("Elegiste el servicio de mesa dulce.")
         alert("El precio por persona es de $1650")
         precioPorPersona = 1650
