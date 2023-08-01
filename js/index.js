@@ -19,15 +19,13 @@ alert("Bienvenido " + nombreUsuario)
 console.log("Nombre de cliente: " + nombreUsuario)
 alert("Obtendrá su presupuesto introduciendo los siguientes datos")
 
-//OBJETO USUARIO
-
-
-
 // METODO CONSTRUCTOR DE PRODUCTOS
 
-function Productos (nombre, precio) {
-    this.nombre = nombre
-    this.precio = precio
+class Producto {
+    constructor(nombre, precio){
+        this.nombre = nombre ;
+        this.precio = precio;
+    }
 }
 
 const cascadaDeChocolate = new Producto ("Cascada de chocolate", 2700)
@@ -73,7 +71,7 @@ while (isNaN(busqueda)){
 
 switch (busqueda) {
     case "1":
-        console.log("Elgiste el servicio de cascada de chocolate.")
+        console.log("Elgiste el servicio de " + cascadaDeChocolate.nombre )
         alert("El precio por persona es de $2700.")
         precioPorPersona = 2700
         console.log("Precio por persona: $" + precioPorPersona)
@@ -81,7 +79,7 @@ switch (busqueda) {
         break;
 
     case "2":
-        console.log("Elegiste el servicio de catering.")
+        console.log("Elegiste el servicio de " + catering.nombre)
         alert("El precio por persona es de $1300.")
         precioPorPersona = 1300
         console.log("Precio por persona: $" + precioPorPersona)
@@ -89,7 +87,7 @@ switch (busqueda) {
         break;
 
     case "3":
-        console.log("Elegiste el servicio de mesa dulce.")
+        console.log("Elegiste el servicio de " + mesaDulce.nombre)
         alert("El precio por persona es de $1650")
         precioPorPersona = 1650
         console.log("Precio por persona: $" + precioPorPersona)
