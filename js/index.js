@@ -86,25 +86,43 @@ while (isNaN(busqueda)){
 switch (busqueda) {
     case "1":
         console.log("Elgiste el servicio de " + cascadaDeChocolate.nombre )
+<<<<<<< HEAD
         alert("El precio por persona es de $" + cascadaDeChocolate.precio)
         precioPorPersona = cascadaDeChocolate.precio
         console.log("Precio por persona: $" + cascadaDeChocolate.precio)
+=======
+        alert("El precio por persona es de $2700.")
+        precioPorPersona = 2700
+        console.log("Precio por persona: $" + precioPorPersona)
+>>>>>>> a788c24d64a7ef0fe1e702c8f540cfdb05488c7c
         presupuestar()
         break;
 
     case "2":
         console.log("Elegiste el servicio de " + catering.nombre)
+<<<<<<< HEAD
         alert("El precio por persona es de $" + catering.precio)
         precioPorPersona = catering.precio
         console.log("Precio por persona: $" + catering.precio)
+=======
+        alert("El precio por persona es de $1300.")
+        precioPorPersona = 1300
+        console.log("Precio por persona: $" + precioPorPersona)
+>>>>>>> a788c24d64a7ef0fe1e702c8f540cfdb05488c7c
         presupuestar()
         break;
 
     case "3":
         console.log("Elegiste el servicio de " + mesaDulce.nombre)
+<<<<<<< HEAD
         alert("El precio por persona es de $" + mesaDulce.precio)
         precioPorPersona = mesaDulce.precio
         console.log("Precio por persona: $" + mesaDulce.precio)
+=======
+        alert("El precio por persona es de $1650")
+        precioPorPersona = 1650
+        console.log("Precio por persona: $" + precioPorPersona)
+>>>>>>> a788c24d64a7ef0fe1e702c8f540cfdb05488c7c
         presupuestar()
         break;
 
