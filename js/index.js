@@ -1,4 +1,5 @@
-//bienvenida al usuario
+// Bienvenida de Usuario
+
 
 alert("¡Bienvenido al sitio web de contratación de servicios para eventos!");
 
@@ -18,6 +19,20 @@ alert("Bienvenido " + nombreUsuario)
 console.log("Nombre de cliente: " + nombreUsuario)
 alert("Obtendrá su presupuesto introduciendo los siguientes datos")
 
+//OBJETO USUARIO
+
+
+
+// METODO CONSTRUCTOR DE PRODUCTOS
+
+function Productos (nombre, precio) {
+    this.nombre = nombre
+    this.precio = precio
+}
+
+const cascadaDeChocolate = new Producto ("Cascada de chocolate", 2700)
+const catering = new Producto ("Catering", 1300)
+const mesaDulce = new Producto ("Mesa Dulce", 1650)
 
 //funciones para realizar presupuesto
 
