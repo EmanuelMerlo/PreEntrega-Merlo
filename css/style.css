@@ -1,3 +1,84 @@
+header {
+  background-color: #F2545B;
+  box-shadow: 0px -20px 120px 0px #191919;
+}
+header ul {
+  padding: 20px;
+  font-size: 25px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+header ul li {
+  text-decoration: none;
+  border: 1px solid #19323C;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+header ul li a {
+  text-decoration: none;
+  color: #19323C;
+}
 
+main {
+  margin-top: 10px;
+}
+main h1 {
+  text-align: center;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 3rem;
+  margin-top: 50px;
+  color: #a93f55;
+}
+main h2 {
+  text-align: center;
+  font-family: "Bricolage Grotesque", sans-serif;
+  color: #8c5e58;
+}
+main .usuario {
+  text-align: center;
+  padding: 20px;
+}
+main .usuario margin input {
+  border: 0px;
+  background-color: rgba(25, 50, 60, 0.2274509804);
+  border-radius: 10px;
+}
+main .envio {
+  text-align: center;
+  padding: 10px;
+}
+main .envio button {
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: rgba(238, 238, 238, 0.9333333333);
+}
+main .service {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  box-shadow: inset 0px 0px 20px 20px rgba(25, 50, 60, 0.062745098);
+}
+main .service div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+main .service div img {
+  width: 100%;
+  border-radius: 200px;
+  padding: 10px;
+}
+main .service div button {
+  font-size: 20px;
+  padding: 10px;
+  transition: 0.5s;
+}
+main .service div button:hover {
+  scale: 110%;
+  transition: 0.5s;
+}
 
 /*# sourceMappingURL=style.css.map */
