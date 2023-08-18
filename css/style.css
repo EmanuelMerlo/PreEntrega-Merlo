@@ -1,3 +1,4 @@
+@charset "UTF-8";
 header {
   background-color: #F2545B;
   box-shadow: 0px -20px 120px 0px #191919;
@@ -36,28 +37,19 @@ main h2 {
   font-family: "Bricolage Grotesque", sans-serif;
   color: #8c5e58;
 }
-main .usuario {
+main .div_selección {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main .div_selección h3 {
   text-align: center;
-  padding: 20px;
-}
-main .usuario margin input {
-  border: 0px;
-  background-color: rgba(25, 50, 60, 0.2274509804);
-  border-radius: 10px;
-}
-main .envio {
-  text-align: center;
-  padding: 10px;
-}
-main .envio button {
-  border-radius: 10px;
-  padding: 5px 10px;
-  background-color: rgba(238, 238, 238, 0.9333333333);
+  font-family: "Bricolage Grotesque", sans-serif;
+  color: #a93f55;
 }
 main .service {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
   box-shadow: inset 0px 0px 20px 20px rgba(25, 50, 60, 0.062745098);
 }
 main .service div {
@@ -72,13 +64,21 @@ main .service div img {
   padding: 10px;
 }
 main .service div button {
+  border: 1px solid #19323C;
   font-size: 20px;
-  padding: 10px;
+  border-radius: 20px;
+  padding: 10px 5px;
   transition: 0.5s;
 }
 main .service div button:hover {
   scale: 110%;
   transition: 0.5s;
+}
+
+@media screen and (max-width: 750px) {
+  main .service {
+    flex-direction: column;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

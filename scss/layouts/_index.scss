@@ -1,0 +1,114 @@
+header {
+    background-color: #F2545B;
+    box-shadow: 0px -20px 120px 0px #191919;
+
+    ul {
+        padding: 20px;
+        font-size: 25px;
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        li {
+            text-decoration: none;
+            border: 1px solid #19323C;
+            padding: 5px 10px;
+            border-radius: 10px;
+
+            a {
+                text-decoration: none;
+                color: #19323C;
+            }
+        }
+
+    }
+
+}
+
+
+main {
+    margin-top: 10px;
+
+    h1 {
+        text-align: center;
+        font-family: 'Bricolage Grotesque', sans-serif;
+        font-size: 3rem;
+        margin-top: 50px;
+        color: #a93f55;
+    }
+
+    h2 {
+        text-align: center;
+        font-family: 'Bricolage Grotesque', sans-serif;
+        color: #8c5e58;
+    }
+
+    // .usuario {
+    //     // display: flex;
+    //     // flex-direction: row;
+    //     // justify-content: center;
+    //     // align-items: center;
+    //     // padding: 20px;
+
+    //     // input {
+    //     //     border: 0px;
+    //     //     background-color: #19323c3a;
+    //     //     border-radius: 10px;
+    //     //     width: 20%;
+    //     // }
+
+    //     // .enviar {
+    //     //     border: 1px #19323C solid;
+    //     //     border-radius: 20px;
+    //     //     padding: 5px 10px;
+    //     //     background-color: #eeee;
+    //     // }
+    // }
+
+    .div_selección {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h3 {
+            text-align: center;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            color: #a93f55;
+        }
+    }
+
+    .service {
+        display: flex;
+        flex-direction: row;
+        box-shadow: inset 0px 0px 20px 20px #19323c10;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+
+
+            img {
+                width: 100%;
+                border-radius: 200px;
+                padding: 10px;
+            }
+
+            button {
+                border: 1px solid #19323C;
+                font-size: 20px;
+                border-radius: 20px;
+                padding: 10px 5px;
+                transition: .5s;
+
+                &:hover {
+                    scale: 110%;
+                    transition: .5s;
+                }
+            }
+        }
+    }
+
+}

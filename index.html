@@ -37,34 +37,41 @@
     <main>
 
         <h1>Bienvenidos a Selah Sabores Inolvidables</h1>
-        <h2>Servicios para tu momento inolvidable</h2>
+        <h2>Complete los siguientes campos</h2>
 
-        <div class="usuario">
-            <label for="nombre">Nombre</label>
-            <input class="nombre" type="text">
-            <label for="apellido">Apellido</label>
-            <input class="apellido" type="text">
+        <div>
+            <form class="usuario">
+                <label for="nombre">Nombre</label>
+                <input class="nombre" id="inputNombre" type="text">
+                <label for="apellido">Apellido</label>
+                <input class="apellido" id="inputApellido" type="text">
+                <label for="cpp">Cantidad de personas</label>
+                <input class="cpp" id="inputPersonas" type="number">
+                <input class="enviar" type="submit" id="cargaDatos"></input>
+            </form>
         </div>
 
-        <div class="envio">
-            <button class="enviar btn">Enviar</button>
+        <div class="div_selección" id="divSeleccion">
         </div>
 
         <section class="service">
             <div class="service_cascada">
                 <img src="/assets/cascada.jpg" alt="Cascada de chocolate">
-                <button class="btn">Cascada de Chocolate</button>
+                <p class="ppp">$9.199 por persona*</p>
+                <button id="service_cascada_button" class="service_cascada_button">Cascada de Chocolate</button>
             </div>
             <div class="service_catering">
                 <img src="/assets/catering.jpg" alt="Catering">
-                <button class="btn">Catering Salado</button>
+                <p class="ppp">$5.800 por persona*</p>
+                <button id="service_catering_button" class="service_catering_button">Catering Salado</button>
             </div>
             <div class="service_mesaDulce">
                 <img src="/assets/dulce.jpg" alt="Mesa dulce">
-                <button class="btn">Mesa Dulce</button>
+                <p class="ppp">$7.899 por persona*</p>
+                <button id="service_mesaDulce_button" class="service_mesaDulce_button">Mesa Dulce</button>
             </div>
         </section>
-
+        <div class="container finalPresupuesto" id="presupuestoFinal"></div>
     </main>
     <footer>
 
@@ -72,7 +79,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
-    <!-- <script src="js/index.js"></script> -->
+    <script src="/js/index.js"></script>
 </body>
 
 </html>

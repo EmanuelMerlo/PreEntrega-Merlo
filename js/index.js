@@ -1,155 +1,66 @@
-// Bienvenida de Usuario
+const guardarEnLocal = (key, value) => {
+    localStorage.setItem(key, value)
+};
 
-alert("¡Bienvenido al sitio web de contratación de servicios para eventos!");
+//USUARIO, NOMBRE, APELLIDO Y CANTIDAD DE PERSONAS
+const inputNombre = document.querySelector("#inputNombre");
+const inputApellido = document.querySelector("#inputApellido");
+const inputPersonas = document.querySelector("#inputPersonas");
+const carga = document.querySelector("#cargaDatos");
+const mostrarTexto = document.querySelector("#divSeleccion");
 
-let nombre = prompt("Por favor escriba su nombre.")
-let apellido = prompt("Por favor escriba su apellido.")
+carga.addEventListener("click", (e) => {
+    e.preventDefault();
+    mostrarTexto.innerHTML =
+        `<h3>${inputNombre.value} ${inputApellido.value}, por favor seleccione uno de los servicios para calcular el presupuesto para ${inputPersonas.value} personas</h3>`
 
-class Persona {
-    constructor (name, lastName){
-        this.nombre = name;
-        this.apellido = lastName;
-    }
-}
+    guardarEnLocal("cantidad de personas", inputPersonas.value)
+})
 
-const persona1 = new Persona (nombre, apellido)
-
-console.log(persona1)
-
-while (nombre && apellido == " ") {
-    alert("Ingresaste un nombre inválido")
-    nombre = prompt("Ingresa tu nombre nuevamente")
-    apellido = prompt("Ingresa tu apellido nuevamente")
-}
-
-const nombreUsuario = (nombre + " " + apellido)
-
-alert("Bienvenido " + nombreUsuario)
-console.log("Nombre de cliente: " + nombreUsuario)
-alert("Obtendrá su presupuesto introduciendo los siguientes datos")
-
-// METODO CONSTRUCTOR DE PRODUCTOS
-
+// PRODUCTOS
 class Producto {
-    constructor(nombre, precio){
-        this.nombre = nombre ;
+    constructor(id, nombre, precio) {
+        this.id = id;
+        this.nombre = nombre;
         this.precio = precio;
     }
 }
 
-const cascadaDeChocolate = new Producto ("Cascada de chocolate", 2700)
-const catering = new Producto ("Catering", 1300)
-const mesaDulce = new Producto ("Mesa Dulce", 1650)
-
-const listaProductos = []
-
-listaProductos.push(cascadaDeChocolate, catering, mesaDulce)
-
-//funciones para realizar presupuesto
-
-const resta = (presupuestoTotal, descuentoAlPresupuesto) => presupuestoTotal - descuentoAlPresupuesto;
-
-function presupuestar() {
-    let numeroDePersonas = parseInt(prompt("Introduzca la cantidad de personas"))
-    while (isNaN(numeroDePersonas)) {
-        alert("¡No ingresaste un número válido!");
-        numeroDePersonas = parseInt(prompt("Introduzca la cantidad de personas por favor"));
-    }
-    console.log("La cantidad de personas es: " + numeroDePersonas)
+const productos = [
+    new Producto(1, "Cascada de Chocolate", 9199),
+    new Producto(2, "Catering", 5800),
+    new Producto(3, "Mesa Dulce", 7899),
+]
 
 
-    let presupuestoTotal = (numeroDePersonas * precioPorPersona);
-    let descuentoAlPresupuesto = 8000
+//SELECCION Y PRESUPUESTO
+const presupuesto = (personas, precio) => personas * precio
 
-    if (presupuestoTotal >= 100000) {
-        alert("El presupuesto ha superado los $100.000. Obtendras una bonificación gratuita de $8000")
-        alert("Felicitaciones! El presupuesto fue realizado con éxito. Presione F12 y dirijase a la pestaña de consola para visualizarlo")
-        console.log("El presupuesto sin descuento es de: $" + presupuestoTotal)
-        console.log("El presupuesto final por el servicio es de: $" + resta(presupuestoTotal, 8000))
-    } else {
-        console.log("El presupuesto por el servicio es de: $" + presupuestoTotal)
-        alert("Felicitaciones! El presupuesto fue realizado con éxito. Presione F12 y dirijase a la pestaña de consola para visualizarlo")
-    }
-}
+const cascadaBoton = document.querySelector("#service_cascada_button");
+const cateringBoton = document.querySelector("#service_catering_button");
+const mesaDulceBoton = document.querySelector("#service_mesaDulce_button");
+const mostrarTextoFinal = document.querySelector("#presupuestoFinal");
 
-//Declaraciones de variables para el switch 
+cascadaBoton.addEventListener("click", (e) => {
+    e.preventDefault();
+    const selectedProduct = productos.find(producto => producto.nombre === "Cascada de Chocolate");
+    const totalPresupuesto = presupuesto(inputPersonas.value, selectedProduct.precio);
+    mostrarTextoFinal.innerHTML =
+    `<h3>Total de presupuesto: ${totalPresupuesto}`
+});
 
-let precioPorPersona = 0;
-let busqueda = prompt("Indique la opción con el número correspondiente: \n(1). Cascada de chocolate \n(2). Catering \n(3). Mesa dulce");
+cateringBoton.addEventListener("click", (e) => {
+    e.preventDefault();
+    const selectedProduct = productos.find(producto => producto.nombre === "Catering");
+    const totalPresupuesto = presupuesto(inputPersonas.value, selectedProduct.precio);
+    mostrarTextoFinal.innerHTML =
+    `<h3>Total de presupuesto: ${totalPresupuesto}`
+});
 
-
-while (isNaN(busqueda)){
-    alert("No contamos con ese servicio")
-    busqueda = prompt("Indique la opción con el número correspondiente: \n(1). Cascada de chocolate \n(2). Catering \n(3). Mesa dulce");
-}
-
-switch (busqueda) {
-    case "1":
-        console.log("Elgiste el servicio de " + cascadaDeChocolate.nombre )
-
-        alert("El precio por persona es de $" + cascadaDeChocolate.precio)
-        precioPorPersona = cascadaDeChocolate.precio
-        console.log("Precio por persona: $" + cascadaDeChocolate.precio)
-
-        alert("El precio por persona es de $2700.")
-        precioPorPersona = 2700
-        console.log("Precio por persona: $" + precioPorPersona)
-
-        presupuestar()
-        break;
-
-    case "2":
-        console.log("Elegiste el servicio de " + catering.nombre)
-
-        alert("El precio por persona es de $" + catering.precio)
-        precioPorPersona = catering.precio
-        console.log("Precio por persona: $" + catering.precio)
-
-        alert("El precio por persona es de $1300.")
-        precioPorPersona = 1300
-        console.log("Precio por persona: $" + precioPorPersona)
-
-        presupuestar()
-        break;
-
-    case "3":
-        console.log("Elegiste el servicio de " + mesaDulce.nombre)
-
-        alert("El precio por persona es de $" + mesaDulce.precio)
-        precioPorPersona = mesaDulce.precio
-        console.log("Precio por persona: $" + mesaDulce.precio)
-
-        alert("El precio por persona es de $1650")
-        precioPorPersona = 1650
-        console.log("Precio por persona: $" + precioPorPersona)
-        presupuestar()
-        break;
-
-    default:
-        alert("¡No ingresaste un servicio disponible!")
-        console.log("¡No contrataste un servicio disponible!")
-        break;
-}
-
-
-// Finalziación de presupuesto
-
-alert("Gracias por contratar nuestros servicios")
-
-
-// RECORRER ARRAY
-let conocer = prompt("Si quiere conocer la totalidad de nuestros servicios y su valor escriba si; de lo contrario escriba no.")
-
-switch (conocer) {
-    case "si":
-        listaProductos.forEach((i) => {console.log(i)} )
-        break;
-
-    case "no":
-        alert("Gracias por visitarnos")
-        break;
-
-    default:
-        alert("No ingresaste nada de lo que te pedimos")
-        break;
-}
+mesaDulceBoton.addEventListener("click", (e) => {
+    e.preventDefault();
+    const selectedProduct = productos.find(producto => producto.nombre === "Mesa Dulce");
+    const totalPresupuesto = presupuesto(inputPersonas.value, selectedProduct.precio);
+    mostrarTextoFinal.innerHTML =
+    `<h3>Total de presupuesto: ${totalPresupuesto}`
+});
