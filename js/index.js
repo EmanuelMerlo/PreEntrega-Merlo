@@ -3,6 +3,7 @@ const guardarEnLocal = (key, value) => {
 };
 
 //USUARIO, NOMBRE, APELLIDO Y CANTIDAD DE PERSONAS
+
 const inputNombre = document.querySelector("#inputNombre");
 const inputApellido = document.querySelector("#inputApellido");
 const inputPersonas = document.querySelector("#inputPersonas");
@@ -11,11 +12,21 @@ const mostrarTexto = document.querySelector("#divSeleccion");
 
 carga.addEventListener("click", (e) => {
     e.preventDefault();
-    mostrarTexto.innerHTML =
-        `<h3>${inputNombre.value} ${inputApellido.value}, por favor seleccione uno de los servicios para calcular el presupuesto para ${inputPersonas.value} personas</h3>`
 
-    guardarEnLocal("cantidad de personas", inputPersonas.value)
+    if ((inputNombre.value === "") || (inputApellido.value === "") || (inputPersonas.value === "") || (inputPersonas.value == 0)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Aún te faltan completar campos!',
+        })
+    } else {
+        mostrarTexto.innerHTML =
+            `<h3>${inputNombre.value} ${inputApellido.value}, por favor seleccione uno de los servicios para calcular el presupuesto para ${inputPersonas.value} personas</h3>`
+        guardarEnLocal("cantidad de personas", inputPersonas.value)
+    }
 })
+
+
 
 // PRODUCTOS
 class Producto {
@@ -34,6 +45,7 @@ const productos = [
 
 
 //SELECCION Y PRESUPUESTO
+
 const presupuesto = (personas, precio) => personas * precio
 
 const cascadaBoton = document.querySelector("#service_cascada_button");
@@ -46,7 +58,7 @@ cascadaBoton.addEventListener("click", (e) => {
     const selectedProduct = productos.find(producto => producto.nombre === "Cascada de Chocolate");
     const totalPresupuesto = presupuesto(inputPersonas.value, selectedProduct.precio);
     mostrarTextoFinal.innerHTML =
-    `<h3>Total de presupuesto: ${totalPresupuesto}`
+        `<h3>Total de presupuesto: $${totalPresupuesto}</h3>`
 });
 
 cateringBoton.addEventListener("click", (e) => {
@@ -54,7 +66,7 @@ cateringBoton.addEventListener("click", (e) => {
     const selectedProduct = productos.find(producto => producto.nombre === "Catering");
     const totalPresupuesto = presupuesto(inputPersonas.value, selectedProduct.precio);
     mostrarTextoFinal.innerHTML =
-    `<h3>Total de presupuesto: ${totalPresupuesto}`
+        `<h3>Total de presupuesto: $${totalPresupuesto}</h3>`
 });
 
 mesaDulceBoton.addEventListener("click", (e) => {
@@ -62,5 +74,5 @@ mesaDulceBoton.addEventListener("click", (e) => {
     const selectedProduct = productos.find(producto => producto.nombre === "Mesa Dulce");
     const totalPresupuesto = presupuesto(inputPersonas.value, selectedProduct.precio);
     mostrarTextoFinal.innerHTML =
-    `<h3>Total de presupuesto: ${totalPresupuesto}`
+        `<h3>Total de presupuesto: $${totalPresupuesto}</h3>`
 });

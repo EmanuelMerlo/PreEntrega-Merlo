@@ -74,6 +74,10 @@ main .service div button:hover {
   scale: 110%;
   transition: 0.5s;
 }
+main .finalPresupuesto {
+  display: flex;
+  justify-content: center;
+}
 
 @media screen and (max-width: 750px) {
   main .service {
