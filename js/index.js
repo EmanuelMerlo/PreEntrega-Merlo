@@ -29,6 +29,7 @@ carga.addEventListener("click", (e) => {
 
 
 // PRODUCTOS
+
 class Producto {
     constructor(id, nombre, precio) {
         this.id = id;
@@ -43,36 +44,70 @@ const productos = [
     new Producto(3, "Mesa Dulce", 7899),
 ]
 
+const presupuesto = (personas, precio) => personas * precio;
 
-//SELECCION Y PRESUPUESTO
+const descuento = (res) => {
+    return new Promise((resolve, reject) => {
+        if (res > 150000) {
+            resolve({
+                icon: 'success',
+                title: 'Superaste los $150.000',
+                text: 'Obtuviste una bonificación',
+            });
+        } else {
+            reject({
+                icon: 'info',
+                title: 'Si pasas los $150.000',
+                text: 'Obtendrás una bonificación',
+            });
+        }
+    });
+};
 
-const presupuesto = (personas, precio) => personas * precio
+const mostrarTextoFinal = document.querySelector("#presupuestoFinal");
+
+const clickear = (productoNombre) => {
+    Toastify({
+        text: "Calculando presupuesto",
+        duration: 3000,
+        className: "calculo-icon",
+        style: {
+            background: "linear-gradient(to right, #19323C, #8c5e58)",
+        },
+    }).showToast();
+
+    setTimeout(() => {
+        const selectedProduct = productos.find((producto) => producto.nombre === productoNombre);
+        const totalPresupuesto = presupuesto(inputPersonas.value,selectedProduct.precio);
+        mostrarTextoFinal.innerHTML = `<h3>Total de presupuesto: $${totalPresupuesto}</h3>`;
+        guardarEnLocal("Precio", totalPresupuesto);
+
+        const precioFinal = localStorage.getItem("Precio");
+        descuento(precioFinal)
+            .then((resolve) => {
+                Swal.fire(resolve);
+            })
+            .catch((error) => {
+                Swal.fire(error);
+            });
+    }, 3000);
+};
 
 const cascadaBoton = document.querySelector("#service_cascada_button");
 const cateringBoton = document.querySelector("#service_catering_button");
 const mesaDulceBoton = document.querySelector("#service_mesaDulce_button");
-const mostrarTextoFinal = document.querySelector("#presupuestoFinal");
 
 cascadaBoton.addEventListener("click", (e) => {
     e.preventDefault();
-    const selectedProduct = productos.find(producto => producto.nombre === "Cascada de Chocolate");
-    const totalPresupuesto = presupuesto(inputPersonas.value, selectedProduct.precio);
-    mostrarTextoFinal.innerHTML =
-        `<h3>Total de presupuesto: $${totalPresupuesto}</h3>`
+    clickear("Cascada de Chocolate");
 });
 
 cateringBoton.addEventListener("click", (e) => {
     e.preventDefault();
-    const selectedProduct = productos.find(producto => producto.nombre === "Catering");
-    const totalPresupuesto = presupuesto(inputPersonas.value, selectedProduct.precio);
-    mostrarTextoFinal.innerHTML =
-        `<h3>Total de presupuesto: $${totalPresupuesto}</h3>`
+    clickear("Catering");
 });
 
 mesaDulceBoton.addEventListener("click", (e) => {
     e.preventDefault();
-    const selectedProduct = productos.find(producto => producto.nombre === "Mesa Dulce");
-    const totalPresupuesto = presupuesto(inputPersonas.value, selectedProduct.precio);
-    mostrarTextoFinal.innerHTML =
-        `<h3>Total de presupuesto: $${totalPresupuesto}</h3>`
+    clickear("Mesa Dulce");
 });
